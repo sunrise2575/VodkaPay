@@ -1,28 +1,46 @@
-# vodka pay
+# VodkaPay
 
 간편하고 효율적인 외상 장부
 
-## 사례
+## TODO
 
-- 아래 사례들을 모두 간편하게 처리할 수 있도록 DB와 UI 디자인
+- [ ] Frontend 제작
+- [ ] Backend 제작
 
-### 사례 1
+## HTTP routing
 
-- 물건 10만원
-- 참여인원 A,B,C,D,E
-- A는 3만원, B는 7만원 냄
-- C, D, E는 돈 안냄
+1. Frontend (by `react-router-dom`)
 
-### 사례 2
+| **Name**          | **Path**   | **Comment**                      |
+| ----------------- | ---------- | -------------------------------- |
+| **Main**          | `/`        | 메인 화면. 로그인 페이지가 뜬다. |
+| **Sign-up**       | `/signup`  | 회원가입 화면.                   |
+| **User info.**    | `/my`      | 유저 정보 화면                   |
+| **Users Ranking** | `/ranking` | 유저들 랭킹 화면                 |
+| **Event**         | `/event`   | 이벤트 관리 화면                 |
 
-- 음식 10만원
-- 식사인원 A,B,C,D,E
-- A는 술 안먹음. 3000원 뺀다
+2. Backend
 
-### 사례 3
+| **Name**       | **Path**       | **Comment**      | **C** | **R** | **U** | **D** |
+| -------------- | -------------- | ---------------- | ----- | ----- | ----- | ----- |
+| **User**       | `/api/user`    | 유저 관련 요청   | Y     | Y     | Y     | Y     |
+| **Event**      | `/api/event`   | 이벤트 관련 요청 | Y     | Y     | Y     | Y     |
+| **Ranking**    | `/api/ranking` | 랭킹 관련 요청   |       | Y     |       |       |
+| **Statistics** | `/api/stat`    | 통계 관련 요청   |       | Y     |       |       |
 
-- 내 빚을 탕감하려고 보드카페이에 돈을 낸다
+- Note: RESTful CRUD rule
+  | **HTTP method** | **Meaning in CRUD** |
+  |-----------------|---------------------|
+  | **POST** | Create |
+  | **GET** | Read |
+  | **PUT** | Update (entire) |
+  | **PATCH** | Update (partial) |
+  | **DELETE** | Delete |
 
-### 사례 4
+## Design
 
-- 보드카페이에 미리 내가 돈을 넣어둔다
+|              | **Concept** | **Implementation** |
+| ------------ | ----------- | ------------------ |
+| **Frontend** | SPA         | ReactJS            |
+| **Backend**  | RESTful     | NodeJS express     |
+| **Database** | Relational  | Sqite3             |

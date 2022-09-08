@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE (email)
 );
 
-CREATE TABLE IF NOT EXISTS incidents (
+CREATE TABLE IF NOT EXISTS events (
     id BIGINT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     memo TEXT NOT NULL,
@@ -21,23 +21,23 @@ CREATE TABLE IF NOT EXISTS actions (
     PRIMARY KEY (id),
 );
 
-CREATE TABLE IF NOT EXISTS incidents_detail (
-    incident_id BIGINT NOT NULL,
+CREATE TABLE IF NOT EXISTS events_detail (
+    event_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
     action_id BIGINT NOT NULL,
     money BIGINT NOT NULL,
-    UNIQUE (incident_id, user_id, action_id),
-    FOREIGN KEY (incident_id) REFERENCES user(id),
+    UNIQUE (event_id, user_id, action_id),
+    FOREIGN KEY (event_id) REFERENCES user(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
     FOREIGN KEY (action_id) REFERENCES user(id)
 );
 
 CREATE TABLE IF NOT EXISTS overpayments (
-    incident_id BIGINT NOT NULL,
+    event_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
     money BIGINT NOT NULL,
-    UNIQUE (incident_id, user_id),
-    FOREIGN KEY (incident_id) REFERENCES user(id),
+    UNIQUE (event_id, user_id),
+    FOREIGN KEY (event_id) REFERENCES user(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
@@ -59,4 +59,4 @@ UPDATE users AS u
 SET pw_sha_256 = ?
 WHERE u.id = ? AND u.pw_sha256 = ?;
 
-INSERT OR IGNORE INTO incidents (memo) VALUES (?);
+INSERT OR IGNORE INTO events (memo) VALUES (?);

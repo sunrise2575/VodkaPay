@@ -1,10 +1,12 @@
-import React from "react";
-import UserAuth from "components/UserAuth";
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import { UserAuth } from "components/UserAuth";
 
 function App() {
   return (
     <div className="App">
-      <UserAuth />
+      <Route exact path="/" component={UserAuth} />
+      <Route path="/ranking" component={UserAuth} />
     </div>
   );
 }

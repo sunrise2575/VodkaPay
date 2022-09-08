@@ -18,7 +18,7 @@ app.get("/init", (req, res) => {
     UNIQUE (email)
   )
 
-  CREATE TABLE IF NOT EXISTS incident (
+  CREATE TABLE IF NOT EXISTS event (
     -- writing...
   )
 
