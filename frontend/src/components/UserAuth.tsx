@@ -5,10 +5,6 @@ import Layout from "components/Layout";
 function UserAuth() {
   const [isLogin, set_PageState] = useState(true);
 
-  const handle_PageState = () => {
-    set_PageState(false);
-  };
-
   const onSubmit_UserAuth = (e: React.FormEvent) => {
     e.preventDefault();
     var payload = {
@@ -65,7 +61,7 @@ function UserAuth() {
           {isLogin && <input type="submit" value="로그인" />}
           <input
             type={isLogin ? "button" : "submit"}
-            onClick={isLogin ? handle_PageState : undefined}
+            onClick={isLogin ? set_PageState(false) : undefined}
             value="회원가입"
           />
         </div>

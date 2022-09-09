@@ -1,10 +1,9 @@
-const express = require("express");
+import { express } from 'express';
+import { path } from 'path';
+import * as db from 'better-sqlite3';
+
 const app = express();
-
-const path = require("path");
-const db = require("better-sqlite3");
-
-var PORT = 8002;
+const PORT = 8002;
 
 app.get("/init", (req, res) => {
   query = `
@@ -39,11 +38,8 @@ app.get("/init", (req, res) => {
   `;
 });
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.send("hello");
-  query = `
-  SELECT * FROM record
-  `;
 });
 
 app.post("/", (req, res) => {

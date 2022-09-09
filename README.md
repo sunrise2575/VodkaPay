@@ -43,4 +43,4 @@
 | ------------ | ----------- | ------------------ |
 | **Frontend** | SPA         | ReactJS            |
 | **Backend**  | RESTful     | NodeJS express     |
-| **Database** | Relational  | Sqite3             |
+| **Database** | Relational  | MySQL              |
